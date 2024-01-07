@@ -1,0 +1,1312 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gmail Clone</title>
+    <!-- adding the tailwind css cdn link -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<!-- for css reset -->
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        outline: 0;
+        box-sizing: border-box;
+    }
+</style>
+
+<body class="h-screen w-screen mx-auto">
+    <div class="grid grid-cols-[80px_300px_auto] h-full bg-slate-200">
+        <!-- for left button options -->
+        <ul class="bg-skyblue-300 space-y-5">
+            <!-- for menu button -->
+            <li class="flex flex-col justify-center items-center">
+                <div
+                    class="p-4 cursor-pointer rounded-full mt-2 transition-all duration-300 ease-in-out hover:bg-gray-300">
+                    <i class="fa-solid fa-bars w-5 h-6"></i>
+                </div>
+            </li>
+
+            <!-- for mail -->
+            <li class="flex flex-col justify-center items-center">
+                <div class="px-4 py-2 cursor-pointer bg-slate-300 rounded-3xl">
+                    <i class="fa-regular fa-envelope w-5 h-6"></i>
+                </div>
+                <p class="text-sm font-semibold w-5 h-6">Mail</p>
+            </li>
+
+            <!-- for chat -->
+            <li class="flex flex-col justify-center items-center">
+                <div
+                    class="px-4 py-2 cursor-pointer transition-all duration-200 ease-in-out hover:bg-slate-300 hover:rounded-3xl">
+                    <i class="fa-regular fa-comment w-5 h-6"></i>
+                </div>
+
+                <p class="text-sm font">Chat</p>
+            </li>
+
+            <!-- for spaces -->
+            <li class="flex flex-col justify-center items-center">
+                <div
+                    class="px-3 py-1 cursor-pointer transition-all duration-200 ease-in-out hover:bg-slate-300 hover:rounded-3xl">
+                    <i class="fa-solid fa-users-line w-5 h-7  "></i>
+                </div>
+
+                <p class="text-sm">Spaces</p>
+            </li>
+
+            <!-- for meet -->
+            <li class="flex flex-col justify-center items-center">
+                <div
+                    class="px-3 py-1 cursor-pointer transition-all duration-200 ease-in-out hover:bg-slate-300 hover:rounded-3xl">
+                    <i class="fa-solid fa-video w-5 h-6"></i>
+                </div>
+
+                <p class="text-sm">Meet</p>
+            </li>
+        </ul>
+
+        <!-- for mail options -->
+        <div class="bg-slate-100 flex flex-col px-4">
+            <!-- gmail logo -->
+            <img class="h-12 w-32 my-4" src="./Assets/Maillogo.png" alt="gmail logo" />
+
+            <!-- compose button -->
+            <div
+                class="w-40 bg-blue-200 shadow-full cursor-pointer hover:shadow-md flex items-center justify-center gap-2 py-4 rounded-[1.2rem] font-semibold">
+                <i class="fa-solid fa-pencil px-2"></i>
+                <p>Compose</p>
+            </div>
+
+            <!-- for mail options -->
+            <ul class="mt-5">
+                <!-- for inbox -->
+                <li
+                    class="w-full flex items-center gap-5 font-semibold bg-slate-300 px-5 rounded-2xl py-[1.5px] mb-1 cursor-pointer">
+                    <i class="fa-solid fa-inbox"></i>
+                    <p>Inbox</p>
+                </li>
+
+                <!-- for starred -->
+                <li
+                    class="w-full flex items-center gap-5 transition-all duration-200 ease-in-out hover:bg-gray-200 px-5 rounded-2xl py-[1.5px] mb-1 cursor-pointer">
+                    <i class="fa-regular fa-star"></i>
+
+                    <p>Starred</p>
+                </li>
+
+                <!-- for snoozed -->
+                <li
+                    class="w-full flex items-center gap-5 transition-all duration-200 ease-in-out hover:bg-gray-200 px-5 rounded-2xl py-[1.5px] mb-1 cursor-pointer">
+                    <i class="fa-solid fa-stopwatch"></i>
+                    <p>Snoozed</p>
+                </li>
+
+                <!-- for sent -->
+                <li
+                    class="w-full flex items-center gap-5 transition-all duration-200 ease-in-out hover:bg-gray-200 px-5 rounded-2xl py-[1.5px] mb-1 cursor-pointer">
+                    <i class="fa-regular fa-paper-plane"></i>
+                    <p>Sent</p>
+                </li>
+
+                <!-- for draft -->
+                <li
+                    class="w-full flex items-center gap-5 transition-all duration-200 ease-in-out hover:bg-gray-200 px-5 rounded-2xl py-[1.5px] mb-1 cursor-pointer">
+                    <i class="fa-regular fa-file"></i>
+                    <p>Drafts</p>
+                </li>
+
+                <!-- for more -->
+                <li
+                    class="w-full flex items-center gap-5 transition-all duration-200 ease-in-out hover:bg-gray-200 px-5 rounded-2xl py-[1.5px] mb-1 cursor-pointer">
+                    <i class="fa-solid fa-chevron-down"></i>
+
+                    <p>More</p>
+                </li>
+            </ul>
+
+            <!-- for labels -->
+            <div class="w-full mt-7">
+                <!-- for label header -->
+                <div class="flex items-center justify-between font-semibold text-lg">
+                    <h2 class="pl-5">Labels</h2>
+                    <i class="fa-regular fa-plus"></i>
+                </div>
+
+                <!-- for labels -->
+                <ul class="w-full">
+                    <li
+                        class="flex items-center justify-between mt-1 mb-1 pl-6 py-[1.5px] font-semibold cursor-pointer transition-all duration-200 ease-in-out hover:bg-gray-200 hover:rounded-3xl group">
+                        <div class="flex items-center gap-5">
+                            <i class="fa-regular fa-bookmark"></i>
+                            <p>Scrum</p>
+                        </div>
+
+                        <div class="mr-1 hidden group-hover:block hover:bg-gray-300 hover:rounded-full"><i
+                                class="fa-solid fa-ellipsis-vertical"></i>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- complete mail section -->
+        <section class="bg-slate-100 h-screen flex flex-col">
+            <!-- for navigation menu -->
+            <header class="bg-slate-100 flex items-center justify-between py-2 h-[13vh] 2xl:h-[8vh]">
+                <!-- for search bar -->
+                <div
+                    class="flex items-center gap-3 w-[450px] 2xl:w-[700px] bg-slate-200 h-[9vh] 2xl:h-[6vh] px-1 rounded-full hover:shadow">
+                    <div class="p-2 flex items-center justify-center rounded-full cursor-pointer hover:bg-gray-200">
+                        <i class="fa-solid fa-search"></i>
+                    </div>
+
+                    <input type="text" placeholder="Search in emails" class="bg-transparent w-full text-lg" />
+                    <div class="p-2 flex items-center justify-center rounded-full cursor-pointer hover:bg-gray-200">
+                        <i class="fa-solid fa-sliders"></i>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-5 pr-5">
+                    <!-- for active button -->
+                    <div
+                        class="flex items-center gap-2 bg-slate-100 h-[9vh] 2xl:h-[6vh] px-4 rounded-full font-semibold">
+                        <!-- for green dot -->
+                        <div class="h-3 w-3 bg-green-700 rounded-full"></div>
+                        <p>Active</p>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </div>
+
+                    <!-- for question mark -->
+                    <div class="p-2 flex items-center justify-center rounded-full cursor-pointer hover:bg-gray-200">
+                        <i class="fa-regular fa-circle-question"></i>
+                    </div>
+
+                    <!-- for setting -->
+                    <div class="p-2 flex items-center justify-center rounded-full cursor-pointer hover:bg-gray-200">
+                        <i class="fa-solid fa-gear"></i>
+                    </div>
+
+                    <!-- for squares -->
+                    <div class="p-2 flex items-center justify-center rounded-full cursor-pointer hover:bg-gray-200">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                            stroke="#5F6368" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25A2.25 2.25 0 0113.5 18v-2.25z" />
+                        </svg>
+                    </div>
+
+                    <!-- for account logo -->
+                    <div
+                        class="flex items-center justify-center rounded-full w-10 h-10 bg-violet-500 font-semibold text-white text-lg cursor-pointer hover:shadow-md">
+                        <i class="fa-solid fa-user-tie"></i>
+                    </div>
+                </div>
+            </header>
+
+            <!-- for displaying mails and right side menu options -->
+            <main class="grid grid-cols-[auto_60px] bg-slate-100 h-[87vh] 2xl:h-[92vh]">
+                <!-- for displaying the mails -->
+                <section class="bg-white overflow-hidden bg-green-200 h-[97%] rounded-2xl">
+                    <!-- for display mails header option buttons -->
+                    <section class="px-5 flex items-center justify-between h-14">
+                        <!-- mail header left section -->
+                        <div class="flex items-center gap-4">
+                            <!-- for checkbox -->
+                            <div class="flex items-center gap-1">
+                                <input type="checkbox" />
+                                <i class="fa-solid fa-chevron-down"></i>
+                            </div>
+
+                            <!-- for refresh -->
+                            <div
+                                class="p-2 flex items-center justify-center rounded-full cursor-pointer hover:bg-gray-200">
+                                <i class="fa-solid fa-arrows-rotate"></i>
+                            </div>
+
+                            <!-- for vertical symbol (menu) -->
+                            <div
+                                class="p-1 flex items-center justify-center rounded-full cursor-pointer hover:bg-gray-200">
+                                <i class="fa-solid fa-ellipsis-vertical"></i>
+                            </div>
+                        </div>
+
+                        <!-- mail header right section -->
+                        <div class="flex items-center gap-4 text-xs font-semibold text-slate-500">
+                            <p>1-50 of 550</p>
+
+                            <!-- for both caret arrows -->
+                            <div
+                                class="p-2 flex items-center justify-center rounded-full cursor-pointer hover:bg-gray-200">
+                                <i class="fa-solid fa-chevron-left"></i>
+                            </div>
+                            <div
+                                class="p-2 flex items-center justify-center rounded-full cursor-pointer hover:bg-gray-200">
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </div>
+                    </section>
+
+                    <!-- mutiple type of mails option -->
+                    <ul class="w-full h-14 flex items-center">
+                        <!-- for primary mail -->
+                        <li
+                            class="w-60 px-5 cursor-pointer flex items-center gap-4 h-full hover:bg-gray-100 text-blue-700 relative">
+                            <i class="fa-solid fa-inbox"></i>
+                            <p class="font-semibold text-sm">Primary</p>
+                            <!-- for blue line -->
+                            <div class="absolute bottom-0 left-2 w-56 h-1 bg-blue-700 rounded-full"></div>
+                        </li>
+
+                        <!-- for promotions mails -->
+                        <li
+                            class="w-60 px-5 cursor-pointer flex items-center gap-4 h-full hover:bg-gray-100 text-slate-500">
+                            <i class="fa-solid fa-tag"></i>
+                            <p class="font-semibold text-sm">Promotions</p>
+                        </li>
+
+                        <!-- for updates mail -->
+                        <li
+                            class="w-60 px-5 cursor-pointer flex items-center gap-4 h-full hover:bg-gray-100 text-slate-500">
+                            <i class="fa-solid fa-circle-exclamation"></i>
+                            <p class="font-semibold text-sm">Updates</p>
+                        </li>
+                        <li
+                            class="w-60 px-5 cursor-pointer flex items-center gap-4 h-full hover:bg-gray-100 text-slate-500">
+                            <i class="fa-solid fa-user-group"></i>
+                            <p class="font-semibold text-sm">Social</p>
+
+                        </li>
+                    </ul>
+
+                    <!-- for displaying recieved mails -->
+                    <ul class="bg-slate-100 divide-y-[1.5px] divide-gray-200 overflow-y-scroll h-full">
+                        <li
+                            class="px-5 py-2 flex items-center gap-40 cursor-pointer hover:shadow hover:shadow-gray-400 group relative">
+                            <!-- for mail info -->
+                            <div class="flex items-center gap-3 text-gray-400">
+                                <input type="checkbox" />
+                                <div class="text-gray-400 group-hover:text-black">
+                                    <i class="fa-regular fa-star"></i>
+                                </div>
+
+                                <img class="w-6"
+                                    src="https://ssl.gstatic.com/ui/v1/icons/mail/gm3/2x/label_important_fill_googyellow500_20dp.png"
+                                    alt="important tag" />
+                                <p class="text-black">PW</p>
+                            </div>
+
+                            <!-- for mail message and time -->
+                            <div class="flex items-center gap-5 relative w-full">
+                                <p class="w-[85%] line-clamp-1">
+                                    Join The Live Class Of Full Stack web development - Join The Live Class Of Full
+                                    Stack web
+                                    development
+                                </p>
+                                <p class="absolute right-1 text-gray-400 font-semibold text-sm">
+                                    08:29 AM
+                                </p>
+                            </div>
+
+                            <!-- for mail hover buttons options -->
+                            <div
+                                class="flex items-center gap-3 hidden absolute right-2 z-10 group-hover:flex group-hover:bg-slate-100">
+                                <!-- for download button -->
+                                <div class="hover:bg-gray-200 p-2 rounded-full">
+                                    <i class="fa-solid fa-arrow-down "></i>
+                                </div>
+
+                                <!-- for delete button -->
+                                <div class="hover:bg-gray-200 p-2 rounded-full">
+                                    <i class="fa-solid fa-trash-can"></i>
+                                </div>
+
+                                <!-- for mail button -->
+                                <div class="hover:bg-gray-200 p-2 rounded-full">
+                                    <i class="fa-regular fa-envelope-open"></i>
+                                </div>
+
+                                <!-- for snooze button -->
+                                <div class="hover:bg-gray-200 p-2 rounded-full">
+                                    <i class="fa-regular fa-clock"></i>
+                                </div>
+                            </div>
+                        </li>
+                        <li
+                            class="px-5 py-2 flex items-center gap-40 cursor-pointer hover:shadow hover:shadow-gray-400 group relative">
+                            <!-- for mail info -->
+                            <div class="flex items-center gap-3 text-gray-400">
+                                <input type="checkbox" />
+                                <div class="text-gray-400 group-hover:text-black">
+                                    <i class="fa-regular fa-star"></i>
+                                </div>
+
+                                <img class="w-6"
+                                    src="https://ssl.gstatic.com/ui/v1/icons/mail/gm3/2x/label_important_fill_googyellow500_20dp.png"
+                                    alt="important tag" />
+                                <p class="text-black">PW</p>
+                            </div>
+
+                            <!-- for mail message and time -->
+                            <div class="flex items-center gap-5 relative w-full">
+                                <p class="w-[85%] line-clamp-1">
+                                    Join The Live Class Of Full Stack web development - Join The Live Class Of Full
+                                    Stack web
+                                    development
+                                </p>
+                                <p class="absolute right-1 text-gray-400 font-semibold text-sm">
+                                    08:29 AM
+                                </p>
+                            </div>
+
+                            <!-- for mail hover buttons options -->
+                            <div
+                                class="flex items-center gap-3 hidden absolute right-2 z-10 group-hover:flex group-hover:bg-slate-100">
+                                <!-- for download button -->
+                                <div class="hover:bg-gray-200 p-2 rounded-full">
+                                    <i class="fa-solid fa-arrow-down "></i>
+                                </div>
+
+                                <!-- for delete button -->
+                                <div class="hover:bg-gray-200 p-2 rounded-full">
+                                    <i class="fa-solid fa-trash-can"></i>
+                                </div>
+
+                                <!-- for mail button -->
+                                <div class="hover:bg-gray-200 p-2 rounded-full">
+                                    <i class="fa-regular fa-envelope-open"></i>
+                                </div>
+
+                                <!-- for snooze button -->
+                                <div class="hover:bg-gray-200 p-2 rounded-full">
+                                    <i class="fa-regular fa-clock"></i>
+                                </div>
+                            </div>
+                        </li>
+                        <li
+                            class="px-5 py-2 flex items-center gap-40 cursor-pointer hover:shadow hover:shadow-gray-400 group relative">
+                            <!-- for mail info -->
+                            <div class="flex items-center gap-3 text-gray-400">
+                                <input type="checkbox" />
+                                <div class="text-gray-400 group-hover:text-black">
+                                    <i class="fa-regular fa-star"></i>
+                                </div>
+
+                                <img class="w-6"
+                                    src="https://ssl.gstatic.com/ui/v1/icons/mail/gm3/2x/label_important_fill_googyellow500_20dp.png"
+                                    alt="important tag" />
+                                <p class="text-black">PW</p>
+                            </div>
+
+                            <!-- for mail message and time -->
+                            <div class="flex items-center gap-5 relative w-full">
+                                <p class="w-[85%] line-clamp-1">
+                                    Join The Live Class Of Full Stack web development - Join The Live Class Of Full
+                                    Stack web
+                                    development
+                                </p>
+                                <p class="absolute right-1 text-gray-400 font-semibold text-sm">
+                                    08:29 AM
+                                </p>
+                            </div>
+
+                            <!-- for mail hover buttons options -->
+                            <div
+                                class="flex items-center gap-3 hidden absolute right-2 z-10 group-hover:flex group-hover:bg-slate-100">
+                                <!-- for download button -->
+                                <div class="hover:bg-gray-200 p-2 rounded-full">
+                                    <i class="fa-solid fa-arrow-down "></i>
+                                </div>
+
+                                <!-- for delete button -->
+                                <div class="hover:bg-gray-200 p-2 rounded-full">
+                                    <i class="fa-solid fa-trash-can"></i>
+                                </div>
+
+                                <!-- for mail button -->
+                                <div class="hover:bg-gray-200 p-2 rounded-full">
+                                    <i class="fa-regular fa-envelope-open"></i>
+                                </div>
+
+                                <!-- for snooze button -->
+                                <div class="hover:bg-gray-200 p-2 rounded-full">
+                                    <i class="fa-regular fa-clock"></i>
+                                </div>
+                            </div>
+                        </li>
+                        <li
+                            class="px-5 py-2 flex items-center gap-40 cursor-pointer hover:shadow hover:shadow-gray-400 group relative">
+                            <!-- for mail info -->
+                            <div class="flex items-center gap-3 text-gray-400">
+                                <input type="checkbox" />
+                                <div class="text-gray-400 group-hover:text-black">
+                                    <i class="fa-regular fa-star"></i>
+                                </div>
+
+                                <img class="w-6"
+                                    src="https://ssl.gstatic.com/ui/v1/icons/mail/gm3/2x/label_important_fill_googyellow500_20dp.png"
+                                    alt="important tag" />
+                                <p class="text-black">PW</p>
+                            </div>
+
+                            <!-- for mail message and time -->
+                            <div class="flex items-center gap-5 relative w-full">
+                                <p class="w-[85%] line-clamp-1">
+                                    Join The Live Class Of Full Stack web development - Join The Live Class Of Full
+                                    Stack web
+                                    development
+                                </p>
+                                <p class="absolute right-1 text-gray-400 font-semibold text-sm">
+                                    08:29 AM
+                                </p>
+                            </div>
+
+                            <!-- for mail hover buttons options -->
+                            <div
+                                class="flex items-center gap-3 hidden absolute right-2 z-10 group-hover:flex group-hover:bg-slate-100">
+                                <!-- for download button -->
+                                <div class="hover:bg-gray-200 p-2 rounded-full">
+                                    <i class="fa-solid fa-arrow-down "></i>
+                                </div>
+
+                                <!-- for delete button -->
+                                <div class="hover:bg-gray-200 p-2 rounded-full">
+                                    <i class="fa-solid fa-trash-can"></i>
+                                </div>
+
+                                <!-- for mail button -->
+                                <div class="hover:bg-gray-200 p-2 rounded-full">
+                                    <i class="fa-regular fa-envelope-open"></i>
+                                </div>
+
+                                <!-- for snooze button -->
+                                <div class="hover:bg-gray-200 p-2 rounded-full">
+                                    <i class="fa-regular fa-clock"></i>
+                                </div>
+                            </div>
+                        </li>
+                        <li
+                            class="px-5 py-2 flex items-center gap-40 cursor-pointer hover:shadow hover:shadow-gray-400 group relative">
+                            <!-- for mail info -->
+                            <div class="flex items-center gap-3 text-gray-400">
+                                <input type="checkbox" />
+                                <div class="text-gray-400 group-hover:text-black">
+                                    <i class="fa-regular fa-star"></i>
+                                </div>
+
+                                <img class="w-6"
+                                    src="https://ssl.gstatic.com/ui/v1/icons/mail/gm3/2x/label_important_fill_googyellow500_20dp.png"
+                                    alt="important tag" />
+                                <p class="text-black">PW</p>
+                            </div>
+
+                            <!-- for mail message and time -->
+                            <div class="flex items-center gap-5 relative w-full">
+                                <p class="w-[85%] line-clamp-1">
+                                    Join The Live Class Of Full Stack web development - Join The Live Class Of Full
+                                    Stack web
+                                    development
+                                </p>
+                                <p class="absolute right-1 text-gray-400 font-semibold text-sm">
+                                    08:29 AM
+                                </p>
+                            </div>
+
+                            <!-- for mail hover buttons options -->
+                            <div
+                                class="flex items-center gap-3 hidden absolute right-2 z-10 group-hover:flex group-hover:bg-slate-100">
+                                <!-- for download button -->
+                                <div class="hover:bg-gray-200 p-2 rounded-full">
+                                    <i class="fa-solid fa-arrow-down "></i>
+                                </div>
+
+                                <!-- for delete button -->
+                                <div class="hover:bg-gray-200 p-2 rounded-full">
+                                    <i class="fa-solid fa-trash-can"></i>
+                                </div>
+
+                                <!-- for mail button -->
+                                <div class="hover:bg-gray-200 p-2 rounded-full">
+                                    <i class="fa-regular fa-envelope-open"></i>
+                                </div>
+
+                                <!-- for snooze button -->
+                                <div class="hover:bg-gray-200 p-2 rounded-full">
+                                    <i class="fa-regular fa-clock"></i>
+                                </div>
+                            </div>
+                        </li>
+                        <li
+                            class="px-5 py-2 flex items-center gap-40 cursor-pointer hover:shadow hover:shadow-gray-400 group relative">
+                            <!-- for mail info -->
+                            <div class="flex items-center gap-3 text-gray-400">
+                                <input type="checkbox" />
+                                <div class="text-gray-400 group-hover:text-black">
+                                    <i class="fa-regular fa-star"></i>
+                                </div>
+
+                                <img class="w-6"
+                                    src="https://ssl.gstatic.com/ui/v1/icons/mail/gm3/2x/label_important_fill_googyellow500_20dp.png"
+                                    alt="important tag" />
+                                <p class="text-black">PW</p>
+                            </div>
+
+                            <!-- for mail message and time -->
+                            <div class="flex items-center gap-5 relative w-full">
+                                <p class="w-[85%] line-clamp-1">
+                                    Join The Live Class Of Full Stack web development - Join The Live Class Of Full
+                                    Stack web
+                                    development
+                                </p>
+                                <p class="absolute right-1 text-gray-400 font-semibold text-sm">
+                                    08:29 AM
+                                </p>
+                            </div>
+
+                            <!-- for mail hover buttons options -->
+                            <div
+                                class="flex items-center gap-3 hidden absolute right-2 z-10 group-hover:flex group-hover:bg-slate-100">
+                                <!-- for download button -->
+                                <div class="hover:bg-gray-200 p-2 rounded-full">
+                                    <i class="fa-solid fa-arrow-down "></i>
+                                </div>
+
+                                <!-- for delete button -->
+                                <div class="hover:bg-gray-200 p-2 rounded-full">
+                                    <i class="fa-solid fa-trash-can"></i>
+                                </div>
+
+                                <!-- for mail button -->
+                                <div class="hover:bg-gray-200 p-2 rounded-full">
+                                    <i class="fa-regular fa-envelope-open"></i>
+                                </div>
+
+                                <!-- for snooze button -->
+                                <div class="hover:bg-gray-200 p-2 rounded-full">
+                                    <i class="fa-regular fa-clock"></i>
+                                </div>
+                            </div>
+                        </li>
+                        <li
+                            class="px-5 py-2 flex items-center gap-40 cursor-pointer hover:shadow hover:shadow-gray-400 group relative">
+                            <!-- for mail info -->
+                            <div class="flex items-center gap-3 text-gray-400">
+                                <input type="checkbox" />
+                                <div class="text-gray-400 group-hover:text-black">
+                                    <i class="fa-regular fa-star"></i>
+                                </div>
+
+                                <img class="w-6"
+                                    src="https://ssl.gstatic.com/ui/v1/icons/mail/gm3/2x/label_important_fill_googyellow500_20dp.png"
+                                    alt="important tag" />
+                                <p class="text-black">PW</p>
+                            </div>
+
+                            <!-- for mail message and time -->
+                            <div class="flex items-center gap-5 relative w-full">
+                                <p class="w-[85%] line-clamp-1">
+                                    Join The Live Class Of Full Stack web development - Join The Live Class Of Full
+                                    Stack web
+                                    development
+                                </p>
+                                <p class="absolute right-1 text-gray-400 font-semibold text-sm">
+                                    08:29 AM
+                                </p>
+                            </div>
+
+                            <!-- for mail hover buttons options -->
+                            <div
+                                class="flex items-center gap-3 hidden absolute right-2 z-10 group-hover:flex group-hover:bg-slate-100">
+                                <!-- for download button -->
+                                <div class="hover:bg-gray-200 p-2 rounded-full">
+                                    <i class="fa-solid fa-arrow-down "></i>
+                                </div>
+
+                                <!-- for delete button -->
+                                <div class="hover:bg-gray-200 p-2 rounded-full">
+                                    <i class="fa-solid fa-trash-can"></i>
+                                </div>
+
+                                <!-- for mail button -->
+                                <div class="hover:bg-gray-200 p-2 rounded-full">
+                                    <i class="fa-regular fa-envelope-open"></i>
+                                </div>
+
+                                <!-- for snooze button -->
+                                <div class="hover:bg-gray-200 p-2 rounded-full">
+                                    <i class="fa-regular fa-clock"></i>
+                                </div>
+                            </div>
+                        </li>
+                        <li
+                            class="px-5 py-2 flex items-center gap-40 cursor-pointer hover:shadow hover:shadow-gray-400 group relative">
+                            <!-- for mail info -->
+                            <div class="flex items-center gap-3 text-gray-400">
+                                <input type="checkbox" />
+                                <div class="text-gray-400 group-hover:text-black">
+                                    <i class="fa-regular fa-star"></i>
+                                </div>
+
+                                <img class="w-6"
+                                    src="https://ssl.gstatic.com/ui/v1/icons/mail/gm3/2x/label_important_fill_googyellow500_20dp.png"
+                                    alt="important tag" />
+                                <p class="text-black">PW</p>
+                            </div>
+
+                            <!-- for mail message and time -->
+                            <div class="flex items-center gap-5 relative w-full">
+                                <p class="w-[85%] line-clamp-1">
+                                    Join The Live Class Of Full Stack web development - Join The Live Class Of Full
+                                    Stack web
+                                    development
+                                </p>
+                                <p class="absolute right-1 text-gray-400 font-semibold text-sm">
+                                    08:29 AM
+                                </p>
+                            </div>
+
+                            <!-- for mail hover buttons options -->
+                            <div
+                                class="flex items-center gap-3 hidden absolute right-2 z-10 group-hover:flex group-hover:bg-slate-100">
+                                <!-- for download button -->
+                                <div class="hover:bg-gray-200 p-2 rounded-full">
+                                    <i class="fa-solid fa-arrow-down "></i>
+                                </div>
+
+                                <!-- for delete button -->
+                                <div class="hover:bg-gray-200 p-2 rounded-full">
+                                    <i class="fa-solid fa-trash-can"></i>
+                                </div>
+
+                                <!-- for mail button -->
+                                <div class="hover:bg-gray-200 p-2 rounded-full">
+                                    <i class="fa-regular fa-envelope-open"></i>
+                                </div>
+
+                                <!-- for snooze button -->
+                                <div class="hover:bg-gray-200 p-2 rounded-full">
+                                    <i class="fa-regular fa-clock"></i>
+                                </div>
+                            </div>
+                        </li>
+                        <li
+                            class="px-5 py-2 flex items-center gap-40 cursor-pointer hover:shadow hover:shadow-gray-400 group relative">
+                            <!-- for mail info -->
+                            <div class="flex items-center gap-3 text-gray-400">
+                                <input type="checkbox" />
+                                <div class="text-gray-400 group-hover:text-black">
+                                    <i class="fa-regular fa-star"></i>
+                                </div>
+
+                                <img class="w-6"
+                                    src="https://ssl.gstatic.com/ui/v1/icons/mail/gm3/2x/label_important_fill_googyellow500_20dp.png"
+                                    alt="important tag" />
+                                <p class="text-black">PW</p>
+                            </div>
+
+                            <!-- for mail message and time -->
+                            <div class="flex items-center gap-5 relative w-full">
+                                <p class="w-[85%] line-clamp-1">
+                                    Join The Live Class Of Full Stack web development - Join The Live Class Of Full
+                                    Stack web
+                                    development
+                                </p>
+                                <p class="absolute right-1 text-gray-400 font-semibold text-sm">
+                                    08:29 AM
+                                </p>
+                            </div>
+
+                            <!-- for mail hover buttons options -->
+                            <div
+                                class="flex items-center gap-3 hidden absolute right-2 z-10 group-hover:flex group-hover:bg-slate-100">
+                                <!-- for download button -->
+                                <div class="hover:bg-gray-200 p-2 rounded-full">
+                                    <i class="fa-solid fa-arrow-down "></i>
+                                </div>
+
+                                <!-- for delete button -->
+                                <div class="hover:bg-gray-200 p-2 rounded-full">
+                                    <i class="fa-solid fa-trash-can"></i>
+                                </div>
+
+                                <!-- for mail button -->
+                                <div class="hover:bg-gray-200 p-2 rounded-full">
+                                    <i class="fa-regular fa-envelope-open"></i>
+                                </div>
+
+                                <!-- for snooze button -->
+                                <div class="hover:bg-gray-200 p-2 rounded-full">
+                                    <i class="fa-regular fa-clock"></i>
+                                </div>
+                            </div>
+                        </li>
+                        <li
+                            class="px-5 py-2 flex items-center gap-40 cursor-pointer hover:shadow hover:shadow-gray-400 group relative">
+                            <!-- for mail info -->
+                            <div class="flex items-center gap-3 text-gray-400">
+                                <input type="checkbox" />
+                                <div class="text-gray-400 group-hover:text-black">
+                                    <i class="fa-regular fa-star"></i>
+                                </div>
+
+                                <img class="w-6"
+                                    src="https://ssl.gstatic.com/ui/v1/icons/mail/gm3/2x/label_important_fill_googyellow500_20dp.png"
+                                    alt="important tag" />
+                                <p class="text-black">PW</p>
+                            </div>
+
+                            <!-- for mail message and time -->
+                            <div class="flex items-center gap-5 relative w-full">
+                                <p class="w-[85%] line-clamp-1">
+                                    Join The Live Class Of Full Stack web development - Join The Live Class Of Full
+                                    Stack web
+                                    development
+                                </p>
+                                <p class="absolute right-1 text-gray-400 font-semibold text-sm">
+                                    08:29 AM
+                                </p>
+                            </div>
+
+                            <!-- for mail hover buttons options -->
+                            <div
+                                class="flex items-center gap-3 hidden absolute right-2 z-10 group-hover:flex group-hover:bg-slate-100">
+                                <!-- for download button -->
+                                <div class="hover:bg-gray-200 p-2 rounded-full">
+                                    <i class="fa-solid fa-arrow-down "></i>
+                                </div>
+
+                                <!-- for delete button -->
+                                <div class="hover:bg-gray-200 p-2 rounded-full">
+                                    <i class="fa-solid fa-trash-can"></i>
+                                </div>
+
+                                <!-- for mail button -->
+                                <div class="hover:bg-gray-200 p-2 rounded-full">
+                                    <i class="fa-regular fa-envelope-open"></i>
+                                </div>
+
+                                <!-- for snooze button -->
+                                <div class="hover:bg-gray-200 p-2 rounded-full">
+                                    <i class="fa-regular fa-clock"></i>
+                                </div>
+                            </div>
+                        </li>
+                        <li
+                            class="px-5 py-2 flex items-center gap-40 cursor-pointer hover:shadow hover:shadow-gray-400 group relative">
+                            <!-- for mail info -->
+                            <div class="flex items-center gap-3 text-gray-400">
+                                <input type="checkbox" />
+                                <div class="text-gray-400 group-hover:text-black">
+                                    <i class="fa-regular fa-star"></i>
+                                </div>
+
+                                <img class="w-6"
+                                    src="https://ssl.gstatic.com/ui/v1/icons/mail/gm3/2x/label_important_fill_googyellow500_20dp.png"
+                                    alt="important tag" />
+                                <p class="text-black">PW</p>
+                            </div>
+
+                            <!-- for mail message and time -->
+                            <div class="flex items-center gap-5 relative w-full">
+                                <p class="w-[85%] line-clamp-1">
+                                    Join The Live Class Of Full Stack web development - Join The Live Class Of Full
+                                    Stack web
+                                    development
+                                </p>
+                                <p class="absolute right-1 text-gray-400 font-semibold text-sm">
+                                    08:29 AM
+                                </p>
+                            </div>
+
+                            <!-- for mail hover buttons options -->
+                            <div
+                                class="flex items-center gap-3 hidden absolute right-2 z-10 group-hover:flex group-hover:bg-slate-100">
+                                <!-- for download button -->
+                                <div class="hover:bg-gray-200 p-2 rounded-full">
+                                    <i class="fa-solid fa-arrow-down "></i>
+                                </div>
+
+                                <!-- for delete button -->
+                                <div class="hover:bg-gray-200 p-2 rounded-full">
+                                    <i class="fa-solid fa-trash-can"></i>
+                                </div>
+
+                                <!-- for mail button -->
+                                <div class="hover:bg-gray-200 p-2 rounded-full">
+                                    <i class="fa-regular fa-envelope-open"></i>
+                                </div>
+
+                                <!-- for snooze button -->
+                                <div class="hover:bg-gray-200 p-2 rounded-full">
+                                    <i class="fa-regular fa-clock"></i>
+                                </div>
+                            </div>
+                        </li>
+                        <li
+                            class="px-5 py-2 flex items-center gap-40 cursor-pointer hover:shadow hover:shadow-gray-400 group relative">
+                            <!-- for mail info -->
+                            <div class="flex items-center gap-3 text-gray-400">
+                                <input type="checkbox" />
+                                <div class="text-gray-400 group-hover:text-black">
+                                    <i class="fa-regular fa-star"></i>
+                                </div>
+
+                                <img class="w-6"
+                                    src="https://ssl.gstatic.com/ui/v1/icons/mail/gm3/2x/label_important_fill_googyellow500_20dp.png"
+                                    alt="important tag" />
+                                <p class="text-black">PW</p>
+                            </div>
+
+                            <!-- for mail message and time -->
+                            <div class="flex items-center gap-5 relative w-full">
+                                <p class="w-[85%] line-clamp-1">
+                                    Join The Live Class Of Full Stack web development - Join The Live Class Of Full
+                                    Stack web
+                                    development
+                                </p>
+                                <p class="absolute right-1 text-gray-400 font-semibold text-sm">
+                                    08:29 AM
+                                </p>
+                            </div>
+
+                            <!-- for mail hover buttons options -->
+                            <div
+                                class="flex items-center gap-3 hidden absolute right-2 z-10 group-hover:flex group-hover:bg-slate-100">
+                                <!-- for download button -->
+                                <div class="hover:bg-gray-200 p-2 rounded-full">
+                                    <i class="fa-solid fa-arrow-down "></i>
+                                </div>
+
+                                <!-- for delete button -->
+                                <div class="hover:bg-gray-200 p-2 rounded-full">
+                                    <i class="fa-solid fa-trash-can"></i>
+                                </div>
+
+                                <!-- for mail button -->
+                                <div class="hover:bg-gray-200 p-2 rounded-full">
+                                    <i class="fa-regular fa-envelope-open"></i>
+                                </div>
+
+                                <!-- for snooze button -->
+                                <div class="hover:bg-gray-200 p-2 rounded-full">
+                                    <i class="fa-regular fa-clock"></i>
+                                </div>
+                            </div>
+                        </li>
+                        <li
+                            class="px-5 py-2 flex items-center gap-40 cursor-pointer hover:shadow hover:shadow-gray-400 group relative">
+                            <!-- for mail info -->
+                            <div class="flex items-center gap-3 text-gray-400">
+                                <input type="checkbox" />
+                                <div class="text-gray-400 group-hover:text-black">
+                                    <i class="fa-regular fa-star"></i>
+                                </div>
+
+                                <img class="w-6"
+                                    src="https://ssl.gstatic.com/ui/v1/icons/mail/gm3/2x/label_important_fill_googyellow500_20dp.png"
+                                    alt="important tag" />
+                                <p class="text-black">PW</p>
+                            </div>
+
+                            <!-- for mail message and time -->
+                            <div class="flex items-center gap-5 relative w-full">
+                                <p class="w-[85%] line-clamp-1">
+                                    Join The Live Class Of Full Stack web development - Join The Live Class Of Full
+                                    Stack web
+                                    development
+                                </p>
+                                <p class="absolute right-1 text-gray-400 font-semibold text-sm">
+                                    08:29 AM
+                                </p>
+                            </div>
+
+                            <!-- for mail hover buttons options -->
+                            <div
+                                class="flex items-center gap-3 hidden absolute right-2 z-10 group-hover:flex group-hover:bg-slate-100">
+                                <!-- for download button -->
+                                <div class="hover:bg-gray-200 p-2 rounded-full">
+                                    <i class="fa-solid fa-arrow-down "></i>
+                                </div>
+
+                                <!-- for delete button -->
+                                <div class="hover:bg-gray-200 p-2 rounded-full">
+                                    <i class="fa-solid fa-trash-can"></i>
+                                </div>
+
+                                <!-- for mail button -->
+                                <div class="hover:bg-gray-200 p-2 rounded-full">
+                                    <i class="fa-regular fa-envelope-open"></i>
+                                </div>
+
+                                <!-- for snooze button -->
+                                <div class="hover:bg-gray-200 p-2 rounded-full">
+                                    <i class="fa-regular fa-clock"></i>
+                                </div>
+                            </div>
+                        </li>
+                        <li
+                            class="px-5 py-2 flex items-center gap-40 cursor-pointer hover:shadow hover:shadow-gray-400 group relative">
+                            <!-- for mail info -->
+                            <div class="flex items-center gap-3 text-gray-400">
+                                <input type="checkbox" />
+                                <div class="text-gray-400 group-hover:text-black">
+                                    <i class="fa-regular fa-star"></i>
+                                </div>
+
+                                <img class="w-6"
+                                    src="https://ssl.gstatic.com/ui/v1/icons/mail/gm3/2x/label_important_fill_googyellow500_20dp.png"
+                                    alt="important tag" />
+                                <p class="text-black">PW</p>
+                            </div>
+
+                            <!-- for mail message and time -->
+                            <div class="flex items-center gap-5 relative w-full">
+                                <p class="w-[85%] line-clamp-1">
+                                    Join The Live Class Of Full Stack web development - Join The Live Class Of Full
+                                    Stack web
+                                    development
+                                </p>
+                                <p class="absolute right-1 text-gray-400 font-semibold text-sm">
+                                    08:29 AM
+                                </p>
+                            </div>
+
+                            <!-- for mail hover buttons options -->
+                            <div
+                                class="flex items-center gap-3 hidden absolute right-2 z-10 group-hover:flex group-hover:bg-slate-100">
+                                <!-- for download button -->
+                                <div class="hover:bg-gray-200 p-2 rounded-full">
+                                    <i class="fa-solid fa-arrow-down "></i>
+                                </div>
+
+                                <!-- for delete button -->
+                                <div class="hover:bg-gray-200 p-2 rounded-full">
+                                    <i class="fa-solid fa-trash-can"></i>
+                                </div>
+
+                                <!-- for mail button -->
+                                <div class="hover:bg-gray-200 p-2 rounded-full">
+                                    <i class="fa-regular fa-envelope-open"></i>
+                                </div>
+
+                                <!-- for snooze button -->
+                                <div class="hover:bg-gray-200 p-2 rounded-full">
+                                    <i class="fa-regular fa-clock"></i>
+                                </div>
+                            </div>
+                        </li>
+                        <li
+                            class="px-5 py-2 flex items-center gap-40 cursor-pointer hover:shadow hover:shadow-gray-400 group relative">
+                            <!-- for mail info -->
+                            <div class="flex items-center gap-3 text-gray-400">
+                                <input type="checkbox" />
+                                <div class="text-gray-400 group-hover:text-black">
+                                    <i class="fa-regular fa-star"></i>
+                                </div>
+
+                                <img class="w-6"
+                                    src="https://ssl.gstatic.com/ui/v1/icons/mail/gm3/2x/label_important_fill_googyellow500_20dp.png"
+                                    alt="important tag" />
+                                <p class="text-black">PW</p>
+                            </div>
+
+                            <!-- for mail message and time -->
+                            <div class="flex items-center gap-5 relative w-full">
+                                <p class="w-[85%] line-clamp-1">
+                                    Join The Live Class Of Full Stack web development - Join The Live Class Of Full
+                                    Stack web
+                                    development
+                                </p>
+                                <p class="absolute right-1 text-gray-400 font-semibold text-sm">
+                                    08:29 AM
+                                </p>
+                            </div>
+
+                            <!-- for mail hover buttons options -->
+                            <div
+                                class="flex items-center gap-3 hidden absolute right-2 z-10 group-hover:flex group-hover:bg-slate-100">
+                                <!-- for download button -->
+                                <div class="hover:bg-gray-200 p-2 rounded-full">
+                                    <i class="fa-solid fa-arrow-down "></i>
+                                </div>
+
+                                <!-- for delete button -->
+                                <div class="hover:bg-gray-200 p-2 rounded-full">
+                                    <i class="fa-solid fa-trash-can"></i>
+                                </div>
+
+                                <!-- for mail button -->
+                                <div class="hover:bg-gray-200 p-2 rounded-full">
+                                    <i class="fa-regular fa-envelope-open"></i>
+                                </div>
+
+                                <!-- for snooze button -->
+                                <div class="hover:bg-gray-200 p-2 rounded-full">
+                                    <i class="fa-regular fa-clock"></i>
+                                </div>
+                            </div>
+                        </li>
+                        <li
+                            class="px-5 py-2 flex items-center gap-40 cursor-pointer hover:shadow hover:shadow-gray-400 group relative">
+                            <!-- for mail info -->
+                            <div class="flex items-center gap-3 text-gray-400">
+                                <input type="checkbox" />
+                                <div class="text-gray-400 group-hover:text-black">
+                                    <i class="fa-regular fa-star"></i>
+                                </div>
+
+                                <img class="w-6"
+                                    src="https://ssl.gstatic.com/ui/v1/icons/mail/gm3/2x/label_important_fill_googyellow500_20dp.png"
+                                    alt="important tag" />
+                                <p class="text-black">PW</p>
+                            </div>
+
+                            <!-- for mail message and time -->
+                            <div class="flex items-center gap-5 relative w-full">
+                                <p class="w-[85%] line-clamp-1">
+                                    Join The Live Class Of Full Stack web development - Join The Live Class Of Full
+                                    Stack web
+                                    development
+                                </p>
+                                <p class="absolute right-1 text-gray-400 font-semibold text-sm">
+                                    08:29 AM
+                                </p>
+                            </div>
+
+                            <!-- for mail hover buttons options -->
+                            <div
+                                class="flex items-center gap-3 hidden absolute right-2 z-10 group-hover:flex group-hover:bg-slate-100">
+                                <!-- for download button -->
+                                <div class="hover:bg-gray-200 p-2 rounded-full">
+                                    <i class="fa-solid fa-arrow-down "></i>
+                                </div>
+
+                                <!-- for delete button -->
+                                <div class="hover:bg-gray-200 p-2 rounded-full">
+                                    <i class="fa-solid fa-trash-can"></i>
+                                </div>
+
+                                <!-- for mail button -->
+                                <div class="hover:bg-gray-200 p-2 rounded-full">
+                                    <i class="fa-regular fa-envelope-open"></i>
+                                </div>
+
+                                <!-- for snooze button -->
+                                <div class="hover:bg-gray-200 p-2 rounded-full">
+                                    <i class="fa-regular fa-clock"></i>
+                                </div>
+                            </div>
+                        </li>
+                        <li
+                            class="px-5 py-2 flex items-center gap-40 cursor-pointer hover:shadow hover:shadow-gray-400 group relative">
+                            <!-- for mail info -->
+                            <div class="flex items-center gap-3 text-gray-400">
+                                <input type="checkbox" />
+                                <div class="text-gray-400 group-hover:text-black">
+                                    <i class="fa-regular fa-star"></i>
+                                </div>
+
+                                <img class="w-6"
+                                    src="https://ssl.gstatic.com/ui/v1/icons/mail/gm3/2x/label_important_fill_googyellow500_20dp.png"
+                                    alt="important tag" />
+                                <p class="text-black">PW</p>
+                            </div>
+
+                            <!-- for mail message and time -->
+                            <div class="flex items-center gap-5 relative w-full">
+                                <p class="w-[85%] line-clamp-1">
+                                    Join The Live Class Of Full Stack web development - Join The Live Class Of Full
+                                    Stack web
+                                    development
+                                </p>
+                                <p class="absolute right-1 text-gray-400 font-semibold text-sm">
+                                    08:29 AM
+                                </p>
+                            </div>
+
+                            <!-- for mail hover buttons options -->
+                            <div
+                                class="flex items-center gap-3 hidden absolute right-2 z-10 group-hover:flex group-hover:bg-slate-100">
+                                <!-- for download button -->
+                                <div class="hover:bg-gray-200 p-2 rounded-full">
+                                    <i class="fa-solid fa-arrow-down "></i>
+                                </div>
+
+                                <!-- for delete button -->
+                                <div class="hover:bg-gray-200 p-2 rounded-full">
+                                    <i class="fa-solid fa-trash-can"></i>
+                                </div>
+
+                                <!-- for mail button -->
+                                <div class="hover:bg-gray-200 p-2 rounded-full">
+                                    <i class="fa-regular fa-envelope-open"></i>
+                                </div>
+
+                                <!-- for snooze button -->
+                                <div class="hover:bg-gray-200 p-2 rounded-full">
+                                    <i class="fa-regular fa-clock"></i>
+                                </div>
+                            </div>
+                        </li>
+                        <li
+                            class="px-5 py-2 flex items-center gap-40 cursor-pointer hover:shadow hover:shadow-gray-400 group relative">
+                            <!-- for mail info -->
+                            <div class="flex items-center gap-3 text-gray-400">
+                                <input type="checkbox" />
+                                <div class="text-gray-400 group-hover:text-black">
+                                    <i class="fa-regular fa-star"></i>
+                                </div>
+
+                                <img class="w-6"
+                                    src="https://ssl.gstatic.com/ui/v1/icons/mail/gm3/2x/label_important_fill_googyellow500_20dp.png"
+                                    alt="important tag" />
+                                <p class="text-black">PW</p>
+                            </div>
+
+                            <!-- for mail message and time -->
+                            <div class="flex items-center gap-5 relative w-full">
+                                <p class="w-[85%] line-clamp-1">
+                                    Join The Live Class Of Full Stack web development - Join The Live Class Of Full
+                                    Stack web
+                                    development
+                                </p>
+                                <p class="absolute right-1 text-gray-400 font-semibold text-sm">
+                                    08:29 AM
+                                </p>
+                            </div>
+
+                            <!-- for mail hover buttons options -->
+                            <div
+                                class="flex items-center gap-3 hidden absolute right-2 z-10 group-hover:flex group-hover:bg-slate-100">
+                                <!-- for download button -->
+                                <div class="hover:bg-gray-200 p-2 rounded-full">
+                                    <i class="fa-solid fa-arrow-down "></i>
+                                </div>
+
+                                <!-- for delete button -->
+                                <div class="hover:bg-gray-200 p-2 rounded-full">
+                                    <i class="fa-solid fa-trash-can"></i>
+                                </div>
+
+                                <!-- for mail button -->
+                                <div class="hover:bg-gray-200 p-2 rounded-full">
+                                    <i class="fa-regular fa-envelope-open"></i>
+                                </div>
+
+                                <!-- for snooze button -->
+                                <div class="hover:bg-gray-200 p-2 rounded-full">
+                                    <i class="fa-regular fa-clock"></i>
+                                </div>
+                            </div>
+                        </li>
+                        <li
+                            class="px-5 py-2 flex items-center gap-40 cursor-pointer hover:shadow hover:shadow-gray-400 group relative">
+                            <!-- for mail info -->
+                            <div class="flex items-center gap-3 text-gray-400">
+                                <input type="checkbox" />
+                                <div class="text-gray-400 group-hover:text-black">
+                                    <i class="fa-regular fa-star"></i>
+                                </div>
+
+                                <img class="w-6"
+                                    src="https://ssl.gstatic.com/ui/v1/icons/mail/gm3/2x/label_important_fill_googyellow500_20dp.png"
+                                    alt="important tag" />
+                                <p class="text-black">PW</p>
+                            </div>
+
+                            <!-- for mail message and time -->
+                            <div class="flex items-center gap-5 relative w-full">
+                                <p class="w-[85%] line-clamp-1">
+                                    Join The Live Class Of Full Stack web development - Join The Live Class Of Full
+                                    Stack web
+                                    development
+                                </p>
+                                <p class="absolute right-1 text-gray-400 font-semibold text-sm">
+                                    08:29 AM
+                                </p>
+                            </div>
+
+                            <!-- for mail hover buttons options -->
+                            <div
+                                class="flex items-center gap-3 hidden absolute right-2 z-10 group-hover:flex group-hover:bg-slate-100">
+                                <!-- for download button -->
+                                <div class="hover:bg-gray-200 p-2 rounded-full">
+                                    <i class="fa-solid fa-arrow-down "></i>
+                                </div>
+
+                                <!-- for delete button -->
+                                <div class="hover:bg-gray-200 p-2 rounded-full">
+                                    <i class="fa-solid fa-trash-can"></i>
+                                </div>
+
+                                <!-- for mail button -->
+                                <div class="hover:bg-gray-200 p-2 rounded-full">
+                                    <i class="fa-regular fa-envelope-open"></i>
+                                </div>
+
+                                <!-- for snooze button -->
+                                <div class="hover:bg-gray-200 p-2 rounded-full">
+                                    <i class="fa-regular fa-clock"></i>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </section>
+
+                <!-- for right side menu options -->
+                <div class="flex flex-col items-center justify-between py-5">
+                    <div>
+                        <!-- for other apps icon -->
+                        <ul class="flex flex-col items-center justify-center gap-5">
+                            <li class="hover:bg-gray-200 rounded-full p-2 cursor-pointer">
+                                <img class="w-5"
+                                    src="https://www.gstatic.com/companion/icon_assets/calendar_2020q4_2x.png"
+                                    alt="calender" />
+                            </li>
+                            <li class="hover:bg-gray-200 rounded-full p-2 cursor-pointer">
+                                <img class="w-5"
+                                    src="https://www.gstatic.com/companion/icon_assets/keep_2020q4v3_2x.png"
+                                    alt="notes" />
+                            </li>
+                            <li class="hover:bg-gray-200 rounded-full p-2 cursor-pointer">
+                                <img class="w-5" src="https://www.gstatic.com/companion/icon_assets/tasks_2021_2x.png"
+                                    alt="tasks" />
+                            </li>
+                            <li class="hover:bg-gray-200 rounded-full p-2 cursor-pointer">
+                                <img class="w-5"
+                                    src="https://www.gstatic.com/companion/icon_assets/contacts_2022_2x.png"
+                                    alt="contacts" />
+                            </li>
+                        </ul>
+
+                        <!-- for divider -->
+                        <div class="h-[1px] bg-gray-200 w-5 my-10 mx-auto"></div>
+
+                        <!-- for google meet and more -->
+                        <ul class="flex flex-col items-center justify-center gap-10">
+                            <div class="hover:bg-gray-200 rounded-full p-2 cursor-pointer">
+                                <i class="fa-solid fa-video text-blue-700"></i>
+                            </div>
+                            <div class="hover:bg-gray-200 rounded-full p-2 cursor-pointer">
+                                <i class="fa-solid fa-plus text-blue-700"></i>
+                            </div>
+                        </ul>
+                    </div>
+
+                    <!-- for carret symbol -->
+                    <div class="hover:bg-gray-200 rounded-full p-2 cursor-pointer">
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </div>
+                </div>
+            </main>
+        </section>
+    </div>
+</body>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</html>
